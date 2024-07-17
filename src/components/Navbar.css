@@ -1,0 +1,79 @@
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #111;
+  color: white;
+}
+
+.nav-left .nav-logo {
+  font-size: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+.nav-left img{
+  height: 50px;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.35rem 0.35rem;
+  position: relative;
+  transition: border 0.3s ease;
+}
+
+.nav-links a:hover {
+  border: 2px solid white; 
+  border-radius: 30px;
+}
+
+.navbar-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.navbar-toggle .fa-bars {
+  font-size: 1.5rem;
+}
+
+.nav-profile .fas {
+  color: white; 
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    width: 100%;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+}
