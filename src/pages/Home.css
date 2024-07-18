@@ -65,7 +65,7 @@
 .trending-section {
   background-color: #000;
   width: 100%;
-  height: 90vh;
+  height: 80vh;
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -78,18 +78,18 @@
   flex-basis:auto;
   color: #fff;
   text-align: center;
-  padding: 20px 20px; 
+  padding: 20px 20px;
 }
 
 .trending-text h2{
   font-size: 2rem;
   font-weight: bold;
 }
+
 .trending-carousel {
   flex-basis:auto;
   width:30%;
   padding: 0 20px; 
-  font-size: 4rem;
 }
 
 @media (max-width: 768px) {
@@ -97,10 +97,11 @@
     flex-direction: column;
     height: auto;
     padding: 20px 0;
+    width:100%;
   }
 
   .trending-text, .trending-carousel {
-    flex: 1 1 100%;
+    flex-basis: auto;
     width: 100%;
     text-align: center; 
     padding: 0 20px;

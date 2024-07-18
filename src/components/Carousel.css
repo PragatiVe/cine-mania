@@ -39,7 +39,7 @@
   justify-content: center;
   align-items: center;
   height: auto;
-  max-height:90vh;
+  max-height:80vh;
   transition: transform 0.3s ease;
   outline: none;
 }
@@ -47,12 +47,12 @@
 .slick-slide img {
   max-width: 100%;
   height: auto;
-  max-height: 70vh;
+  max-height: 60vh;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-
+.slic-prev,
 .slick-next {
   position: absolute;
   top: 50%;
@@ -91,3 +91,4 @@
     font-size: 20px;
   }
 }
+
