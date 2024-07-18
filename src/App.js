@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import './index.css';  // Add this line to include a basic CSS file
+import './index.css'; 
 import Home from './pages/Home';
 
 const Movies = () => <div>Movies Page</div>;
