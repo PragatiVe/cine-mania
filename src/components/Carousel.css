@@ -15,7 +15,7 @@
   -ms-touch-action: pan-y;
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
-  margin-left: 5.8rem;
+  margin-left: 3rem;
 }
 
 .slick-list {
@@ -70,7 +70,7 @@
 }
 
 .slick-next {
-  left: calc(50% + 122px);
+  left: calc(50% + 102px);
 }
 
 .slick-prev:hover,
@@ -87,7 +87,7 @@
   }
 
   .slick-next {
-    left: calc(50% + 104px);
+    left: calc(50% + 88px);
   }
 
 }
