@@ -17,10 +17,24 @@
 .nav-left img{
   height: 50px;
 }
-.nav-right {
+
+.nav-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right:1rem;
+}
+
+.center-right {
   display: flex;
   align-items: center;
   margin-right: 1.5rem;
+}
+
+.center-left{
+  display: flex;
+  align-items: center;
+  padding-right: 25rem;
 }
 
 .nav-links {
@@ -48,7 +62,6 @@
 .navbar-toggle {
   display: none;
   cursor: pointer;
-
 }
 
 .navbar-toggle .fa-bars {
@@ -60,6 +73,13 @@
 }
 
 @media (max-width: 768px) {
+
+  .center-left{
+    display: flex;
+    align-items: center;
+    padding-right: 1.5rem;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
@@ -86,8 +106,7 @@
 
   .navbar-toggle {
     display: block;
-    margin-right: 1rem;
-    margin-left: auto;
+    
   }
 }  
 

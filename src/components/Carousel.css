@@ -15,6 +15,7 @@
   -ms-touch-action: pan-y;
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
+  margin-left: 5.8rem;
 }
 
 .slick-list {
@@ -29,7 +30,6 @@
 .slick-track {
   position: relative;
   top: 0;
-  left: 0;
   display: flex;
   align-items: center;
 }
@@ -64,18 +64,13 @@
   border-radius: 50%;
   cursor: pointer;
   display: flex;
-  justify-content: center;
   align-items: center;
   color: #fff;
   font-size: 24px;
 }
 
-.slick-prev {
-  left: 20px;
-}
-
 .slick-next {
-  right: 20px;
+  left: calc(50% + 122px);
 }
 
 .slick-prev:hover,
@@ -90,5 +85,10 @@
     height: 30px;
     font-size: 20px;
   }
+
+  .slick-next {
+    left: calc(50% + 104px);
+  }
+
 }
 
