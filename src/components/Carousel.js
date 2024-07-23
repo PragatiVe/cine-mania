@@ -9,7 +9,8 @@ const Carousel = ({ movies }) => {
         speed: 500,
         slidesToShow: 1,    
         slidesToScroll: 1,   
-        autoplay: true,      
+        autoplay: true,
+        arrows: false,      
         autoplaySpeed: 3000, 
         responsive: [
           {
@@ -43,7 +44,6 @@ const Carousel = ({ movies }) => {
         {movies.map((movie) => (
           <div key={movie.id} className="carousel-item">
             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-            <h3>{movie.title}</h3>
           </div>
         ))}
       </Slider>
