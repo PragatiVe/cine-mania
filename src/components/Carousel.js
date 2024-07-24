@@ -6,7 +6,7 @@ const Carousel = ({ movies }) => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 200,
         slidesToShow: 1,    
         slidesToScroll: 1,   
         autoplay: true,
@@ -37,13 +37,17 @@ const Carousel = ({ movies }) => {
         ]
       };
     
-
+    console.log('Movies in Carousel:', movies);  
   return (
     <div className="carousel-container">
       <Slider {...settings}>
         {movies.map((movie) => (
           <div key={movie.id} className="carousel-item">
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title || 'Movie Poster'}
+                onError={(e) => e.target.src = 'fallback_image_url'}
+              />
           </div>
         ))}
       </Slider>

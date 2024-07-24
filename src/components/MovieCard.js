@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './MovieCard.css'; // Create a CSS file for styling
 
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
@@ -8,6 +7,10 @@ const MovieCard = ({ movie }) => {
   const handleCardClick = () => {
     navigate(`/details/${movie.id}`);
   };
+
+  const releaseYear = movie.release_date
+    ? new Date(movie.release_date).getFullYear(): movie.first_air_date
+    ? new Date(movie.first_air_date).getFullYear(): 'Unknown';
 
   return (
     <div className="movie-card" onClick={handleCardClick}>
@@ -18,7 +21,7 @@ const MovieCard = ({ movie }) => {
       />
       <div className="movie-card-content">
         <h3>{movie.title || movie.name}</h3>
-        <p>{movie.overview ? movie.overview.slice(0, 100) + '...' : 'No overview available.'}</p>
+        <p className="movie-release-year">{releaseYear}</p>
       </div>
     </div>
   );

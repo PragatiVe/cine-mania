@@ -8,11 +8,15 @@ const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
-
   useEffect(() => {
     const getMovies = async () => {
       const data = await fetchMovies('/movie/popular');
-      setPopularMovies(data.results);
+      console.log('Fetched Movies Data:', data); 
+      if (data && data.results) {
+        setPopularMovies(data.results);
+      } else {
+        console.error('No results found or data is null:', data);
+      }
     };
 
     getMovies();
@@ -53,3 +57,4 @@ const Home = () => {
 };
 
 export default Home;
+
