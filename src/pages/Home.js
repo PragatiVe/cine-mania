@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './Home.css';
 import { fetchMovies } from '../utils/tmdb';
 import Carousel from '../components/Carousel';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getMovies = async () => {
@@ -15,14 +18,23 @@ const Home = () => {
     getMovies();
   }, []);
 
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearch = () => {
+    if (searchQuery.trim() === '') return;
+    navigate(`/search?q=${searchQuery}`);
+  };
+
   return (
     <div className="home-container">
       <div className="search-section">
         <div className="overlay"></div>
         <div className="content">
           <h1>Search for movies, TV shows and more...</h1>
-          <input type="text" placeholder="Find" className="search-input" />
-          <button className="search-button">Search</button>
+          <input type="text" placeholder="Find" className="search-input"  value={searchQuery} onChange={handleInputChange}/>
+          <button className="search-button" onClick={handleSearch}>Search</button>
         </div>
       </div>
       <div className="divider-line"></div>
