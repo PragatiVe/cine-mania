@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie ,type}) => {
   const navigate = useNavigate();
 
-  const handleCardClick = () => {
-    navigate(`/details/${movie.id}`);
+  const handleCardClick = (id) => {
+    navigate(`/detail/${movie.id}`,{state : { type } });
   };
 
   const releaseYear = movie.release_date

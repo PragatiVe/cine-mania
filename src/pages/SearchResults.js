@@ -38,10 +38,10 @@ const SearchResults = () => {
       <div className="results-list">
         {results.length > 0 ? (
           results.map((item) => (
-            <MovieCard key={item.id} movie={item} />
+            <MovieCard key={item.id} movie={item} type={item.media_type}/>
           ))
         ) : (
-          <p>No results found</p>
+          <p>No results found </p>
         )}
       </div>
     </div>
