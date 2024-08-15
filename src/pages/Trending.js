@@ -1,35 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import { fetchMovies } from '../utils/tmdb';
+import { fetchMovies, fetchLatestMovies , fetchLatestTVShows} from '../utils/tmdb';
 import Carousel from '../components/Carousel';
-import MovieCard from '../components/MovieCard';
+import ScrollList from '../components/ScrollList';
 import './Trending.css';
 
 const Trending = () => {
-    const [popularMovies, setPopularMovies] = useState([]);
-    const [latestMovies, setLatestMovies] = useState([]);
+    const [popularMovies, setPopularMovies] = useState([]); //used for carousel
+    const [latestMovies, setLatestMovies] = useState([]); //get latest released movies
+    const [latestTVShows, setLatestTVShows] = useState([]); //get latest released tv shows
+    const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
-        const getMovies = async () => {
-            const data = await fetchMovies('/movie/popular');
-            console.log('Fetched Movies Data:', data);
-            if (data && data.results) {
-                setPopularMovies(data.results);
-            } else {
-                console.error('No results found or data is null:', data);
-            }
+        const fetchAllData = async () => {
+            try {
+                const popularData = await fetchMovies('/movie/popular');
+                const latestMoviesData = await fetchLatestMovies();
+                const latestTVShowsData = await fetchLatestTVShows();
 
-            const latestData = await fetchMovies('/movie/now_playing');
-            console.log('Fetched LatestMovies Data:', latestData);
-            if (latestData && latestData.results) {
-                setLatestMovies(latestData.results);
-            }
-            else {
-                console.error('No results found or data is null:', latestData);
-            }
+                if (popularData && popularData.results) {
+                    setPopularMovies(popularData.results);
+                } else {
+                    console.error('No popular movies found');
+                }
 
+                if (latestMoviesData && latestMoviesData.length >0) {
+                    setLatestMovies(latestMoviesData);
+                } else {
+                    console.error('No latest movies found');
+                }
+
+                if (latestTVShowsData && latestTVShowsData.length >0) {
+                    setLatestTVShows(latestTVShowsData);
+                } else {
+                    console.error('No latest TV shows found');
+                }
+
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            } finally {
+                setLoading(false);
+            }
         };
 
-        getMovies();
+        fetchAllData();
     }, []);
 
     return (
@@ -40,15 +53,13 @@ const Trending = () => {
                     <h5>Stay in the loop with trending picks!</h5>
                 </div>
                 <div className="trending-carousel">
-                    {popularMovies.length > 0 ? <Carousel movies={popularMovies} /> : <p>Loading...</p>}
+                    {loading ? <p>Loading...</p> : popularMovies.length > 0 ? <Carousel movies={popularMovies} /> : <p>No trending movies found</p>}
                 </div>
             </div>
             <div className="divider-line"></div>
-            <div className="latest-movies-section">
-                <div className="section-header">
-                    <h2>Latest Movies</h2>
-                </div>
-                
+            <div className='scroll-list-section'>
+                <ScrollList title="Latest Movies" movies={latestMovies} />
+                <ScrollList title="Latest TV Shows" movies={latestTVShows} />
             </div>
             <div className="divider-line"></div>
         </div>

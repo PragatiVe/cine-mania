@@ -1,0 +1,72 @@
+.scroll-list {
+    margin: 2rem;
+    padding: 2rem 0;
+    position: relative;
+}
+
+.scroll-list h2 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 1rem;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-container .movie-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.scroll-container .movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(140, 140, 140, 0.5);
+    border-radius: 8px;
+}
+
+.scroll-container .movie-card .movie-card-content {
+    display: none;
+}
+
+.scroll-container-wrapper {
+    position: relative;
+}
+
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(84, 84, 84, 0.5);
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 100;
+}
+
+.scroll-arrow.left {
+    left: 10px;
+}
+
+.scroll-arrow.right {
+    right: 10px;
+}
+
+.scroll-container-wrapper:hover .scroll-arrow {
+    opacity: 1;
+}
